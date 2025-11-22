@@ -1,0 +1,45 @@
+Benjamin: Here are some of the prompts I asked ChatGPT:
+
+Question - ” I’ve pushed the changes that Ive made to a jupyter notebook to a remote branch. When I look at the notebook, it appears some of the plots render but some others dont. In particular: pyLDAvis.gensim_models.prepare(lda_model, corpus, dictionary)
+ doesnt render, why is this “.
+
+Output: 
+
+“That's a very common issue when viewing Jupyter Notebooks directly on a remote Git hosting service (like GitHub, GitLab, or Bitbucket).The plots and visualizations that don't render, specifically the output from pyLDAvis.gensim_models.prepare(), are not actually saved as static images within the notebook file.”
+Later upon messing with some of the plots, there was actual an option to just screenshot a static image of the interactable plot which is what I did.
+
+Question - “ Is each rerun of a BERTopic model going to be different from the last?”
+
+Output:
+Yes, generally each rerun of the BERTopic model will result in slightly different topics, keywords, and document assignments due to the stochastic (random) nature of its underlying components.
+Question - “what happens if i do  CountVectorizer() instead of CountVectorizer(stop_words="english")?
+
+Output:
+
+If you use CountVectorizer() without specifying stop_words="english", the main difference is that the vectorizer will include all words in its vocabulary and subsequent topic calculation, leading to less focused topic keywords.
+
+I ended just sticking with CountVectorizer(stop_words="english") as that most closely emulated the output from the template.
+
+Justin:
+
+I used ChatGPT 5.1 to pinpoint problems with code that errored initially, tweaking figure appearances to better align with the example shown in the template. In building the MyST site, I consulted with ChatGPT 5.1 to attempt to rename the Table of Contents tabs on the left side of the page, which ultimately did not work out and led me to fall back to an alternative workaround (renaming individual notebooks) that wasn’t as clean as I had hoped.
+
+Woojin: 
+
+I used ChatGPT to figure out the way I can add spacing between two plots. The AI tool explained that the spacing between multiple Matplotlib plots can be adjusted using several built-in layout functions. Specifically, plt.subplots_adjust(wspace=..., hspace=...) can control the horizontal and vertical spacing between subplots. I also had to use AI for plotting speeches part to find out how to use LogNorm in a heatmap. It described that logarithmic normalization can be applied to heatmaps by importing and using LogNorm from matplotlib.colors. When passed as the norm argument inside sns.heatmap(), it rescales the color mapping based on a logarithmic distribution.
+
+For the TF-IDF part, the TF-IDF Score column of the dataframe that I built at the end results in a Compressed Sparse Row sparse matrix of dtype float, and I wanted to know why it doesn't show specific numbers instead. ChatGPT explained that TfidfVectorizer.fit_transform() returns a Compressed Sparse Row (CSR) matrix by default because TF-IDF matrices are typically very large and mostly contain zeros. Using a sparse matrix format dramatically improves memory efficiency and computational speed. To convert the sparse matrix into a dense format that can be used inside a pandas DataFrame, methods like .toarray() 
+
+Joseph: These are the prompts I asked ChatGPT:
+
+Question: "How do I install en_core_web_sm in my sotu conda environment?"
+
+Response Summary:
+
+AI provided the command 'python -m spacy download en_core_web_sm' and explained that spaCy models must be installed separately.
+
+Question: "How do I fix plt.savefig giving me a blank image?"
+
+Response Summary:
+
+AI explained that calling plt.show() clears the figure before saving. We fixed it by saving before showing.
